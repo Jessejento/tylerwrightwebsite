@@ -1,42 +1,62 @@
 # Tyler Wright Website
 
-A simple, modern website for showcasing Tyler Wright's plays and songs. Hosted on Netlify.
+A modern React + Vite website for showcasing Tyler Wright's community theater work, band shows, and original music. Hosted on Netlify.
 
 ## Setup
 
-1. **Add Videos**:
-   - Create a `videos` folder in the root directory
-   - Add your video files (MP4 format recommended)
-   - Update `script.js` with your video information
-
-2. **Configure Videos**:
-   Open `script.js` and add your videos to the `videoData` object:
-
-   ```javascript
-   const videoData = {
-       plays: [
-           {
-               title: "Play Title",
-               videoUrl: "videos/play1.mp4",
-               description: "Description here",
-               type: "video"
-           }
-       ],
-       songs: [
-           {
-               title: "Song Title",
-               videoUrl: "videos/song1.mp4",
-               description: "Description here",
-               type: "video"
-           }
-       ]
-   };
+1. **Install Dependencies**:
+   ```bash
+   npm install
    ```
 
-3. **Video Options**:
-   - **Local videos**: Use `type: "video"` and provide the path to your video file
-   - **YouTube**: Use `type: "youtube"` and provide the full YouTube URL
-   - **Vimeo**: Use `type: "vimeo"` and provide the full Vimeo URL
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Add Media Content**:
+   - Edit `src/data/mediaData.js` to add your videos and audio
+   - For videos: Use YouTube embed URLs or local video files
+   - For audio: Add MP3 file URLs or use audio hosting services
+
+## Configuration
+
+### Adding Videos
+
+Edit `src/data/mediaData.js`:
+
+```javascript
+export const mediaData = {
+  plays: [
+    {
+      title: "Play Title",
+      videoUrl: "https://www.youtube.com/embed/VIDEO_ID",
+      description: "Description here",
+      type: "youtube"
+    }
+  ],
+  shows: [
+    {
+      title: "Show Title",
+      videoUrl: "https://www.youtube.com/embed/VIDEO_ID",
+      description: "Description here",
+      type: "youtube"
+    }
+  ],
+  audio: [
+    {
+      title: "Song Title",
+      audioUrl: "https://example.com/song.mp3",
+      description: "Description here"
+    }
+  ]
+}
+```
+
+### Video Options
+- **YouTube**: Use `type: "youtube"` and provide the YouTube embed URL
+- **Vimeo**: Use `type: "vimeo"` and provide the Vimeo URL
+- **Local videos**: Place in `public/videos/` and reference as `/videos/filename.mp4`
 
 ## Deployment to Netlify
 
@@ -44,27 +64,41 @@ A simple, modern website for showcasing Tyler Wright's plays and songs. Hosted o
 2. Go to [Netlify](https://www.netlify.com/)
 3. Click "New site from Git"
 4. Connect your repository
-5. Build settings:
-   - Build command: (leave empty)
-   - Publish directory: `.` (root directory)
+5. Build settings (automatically configured via `netlify.toml`):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
 6. Click "Deploy site"
+
+Netlify will automatically build and deploy your site. Future pushes to your main branch will trigger automatic deployments.
 
 ## File Structure
 
 ```
 tylerwrightwebsite/
-├── index.html          # Main HTML file
-├── styles.css          # Styling
-├── script.js           # JavaScript and video configuration
-├── netlify.toml        # Netlify configuration
-├── videos/             # Video files folder (create this)
-└── README.md           # This file
+├── src/
+│   ├── components/      # Reusable components (Header, Footer, Layout)
+│   ├── pages/           # Page components (Home, Headshots, Plays, Media, Contact)
+│   ├── data/            # Data files (mediaData.js)
+│   ├── App.jsx          # Main app component with routing
+│   ├── main.jsx         # Entry point
+│   └── index.css         # Global styles
+├── public/              # Static assets (videos, images)
+├── index.html           # HTML template
+├── vite.config.js       # Vite configuration
+├── package.json         # Dependencies
+└── netlify.toml         # Netlify configuration
 ```
 
-## Adding New Videos
+## Development
 
-Simply edit `script.js` and add new entries to the `plays` or `songs` arrays. Then:
-- If using local videos: Add the video file to the `videos/` folder
-- If using YouTube/Vimeo: Just update the URL in the script
+- **Start dev server**: `npm run dev`
+- **Build for production**: `npm run build`
+- **Preview production build**: `npm run preview`
 
-After making changes, commit and push to your repository. Netlify will automatically redeploy your site.
+## Adding New Content
+
+1. **Videos/Audio**: Edit `src/data/mediaData.js`
+2. **Text Content**: Edit the page components in `src/pages/`
+3. **Styling**: Edit `src/index.css`
+
+After making changes, commit and push to your repository. Netlify will automatically redeploy.
