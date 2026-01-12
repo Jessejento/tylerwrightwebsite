@@ -4,7 +4,7 @@ export default function Plays() {
       <section id="hero">
         <div className="container">
           <h2>Plays</h2>
-          <p>Community theater work</p>
+          <p>Theater work</p>
         </div>
       </section>
 
@@ -12,20 +12,20 @@ export default function Plays() {
         <div className="container">
           <div className="resume-content">
             <div className="resume-section">
-              <h3>Community Theater</h3>
+              <h3>Theater</h3>
               <div className="resume-item">
                 <div className="resume-role">
                   <strong>Role Name</strong> - <em>Production Name</em>
                 </div>
-                <div className="resume-venue">Community Theater / Year</div>
+                <div className="resume-venue">Theater / Year</div>
               </div>
               <div className="resume-item">
                 <div className="resume-role">
                   <strong>Role Name</strong> - <em>Production Name</em>
                 </div>
-                <div className="resume-venue">Community Theater / Year</div>
+                <div className="resume-venue">Theater / Year</div>
               </div>
-              <p className="resume-note">Add your community theater roles here</p>
+              <p className="resume-note">Add my theater roles here</p>
             </div>
           </div>
         </div>

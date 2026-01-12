@@ -38,14 +38,14 @@ export default function Media() {
       <section id="hero">
         <div className="container">
           <h2>Media</h2>
-          <p>Community theater, band shows, and original songs</p>
+          <p>Theater, band shows, and original songs</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="media-section">
-            <h3>Community Theater</h3>
+            <h3>Theater</h3>
             <div className="video-grid">
               {mediaData.plays.map((play, index) => (
                 <VideoItem key={index} item={play} />
